@@ -27,5 +27,13 @@
   # - import_tasks: system_setup/openssh.yml
   # - import_tasks: system_setup/scripts.yml
 
+  # Copy files
+  - name: Copy bootstrap file into VDI
+    copy:
+      src: files/bootstrap.sh
+      dest: /usr/local/startup/bs.sh
+      mode: 0755
+    tags: files
+
   rescue:
     - set_fact: task_failed=true
